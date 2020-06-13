@@ -3,7 +3,6 @@ import './Board.css'
 
 class Board extends Component {
 
-
     constructor(props) {
         super(props);
         this.state = {
@@ -15,6 +14,7 @@ class Board extends Component {
     componentDidMount() {
 
         this.buildSquares()
+
     }
 
     handleClick = (args) => {
@@ -50,56 +50,56 @@ class Board extends Component {
         temp[midRow - 1][midCol - 1].owner = "P2"
         temp[midRow][midCol].owner = "P2"
 
-        this.setState({ squares: temp })
-
+        this.getMoves(temp)
     }
 
+    getMoves = (args) => {
+
+        //todo
+
+        let temp = args
+
+        this.setState({ squares: temp })
+    }
 
 
     flip = (args, row, col) => {
 
-
         let temp = args
 
         if (this.state.player === 1) {
-            console.log('P1')
-            if (row > 0 && col > 0) {
-                for (let i = 0; i < 8; i++) {
-                    if (temp[row][i].owner === "P2") {
-                        temp[row][i].owner = "P1"
-                    }
-                    if (temp[i][col].owner === "P2") {
-                        temp[i][col].owner = "P1"
-                    }
+            for (let i = 0; i < this.props.rows; i++) {
+                if (temp[i][col].owner === "P2") {
+                    temp[i][col].owner = "P1"
+                }
+            }
+            for (let i = 0; i < this.props.rows; i++) {
+                if (temp[row][i].owner === "P2") {
+                    temp[row][i].owner = "P1"
+                }
+            }
+        } else {
+            for (let i = 0; i < this.props.rows; i++) {
+                if (temp[i][col].owner === "P1") {
+                    temp[i][col].owner = "P2"
+                }
+            }
+            for (let i = 0; i < this.props.rows; i++) {
+                if (temp[row][i].owner === "P1") {
+                    temp[row][i].owner = "P2"
                 }
             }
         }
 
-        //they have to change within a straight line fool
+        
 
-        if (this.state.player === 2) {
-            console.log('P2')
-            if (row > 0 && col > 0) {
-                for (let i = 0; i < 8; i++) {
-                    if (temp[row][i].owner === "P1") {
-                        temp[row][i].owner = "P2"
-                    }
-                    if (temp[i][col].owner === "P1") {
-                        temp[i][col].owner = "P2"
-                    }
-                }
-            }
-        }
-
-        console.log(this.state.player)
-
-
-        this.setState({ squares: temp })
+        // this.setState({ squares: temp })
+        this.getMoves(temp)
     }
 
     render() {
 
-        // console.log(this.state.player)
+        console.log(this.state)
 
         return (
 
@@ -112,12 +112,20 @@ class Board extends Component {
                                 {j.owner === "P1" && <div className="P1" key={Math.random() / Math.random()}></div>}
                                 {this.state.player === 1 && j.owner === "P1_Hint" && <div className="Hint" key={Math.random() / Math.random()}></div>}
                                 {this.state.player === 2 && j.owner === "P2_Hint" && <div className="Hint" key={Math.random() / Math.random()}></div>}
-
                             </div>
                         ))}
                     </div>
-
                 ))}
+                <div className="Game_Stats">
+                    {this.state.player === 1 &&
+                        <h1>
+                            Black
+                        </h1>}
+                    {this.state.player === 2 &&
+                        <h1>
+                            White
+                        </h1>}
+                </div>
             </div>
         )
     }
