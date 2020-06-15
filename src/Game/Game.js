@@ -101,13 +101,13 @@ class Board extends Component {
         if (this.state.player === 1) {
             for (let i = 0; i < this.props.rows; i++) {
                 for (let j = 0; j < this.props.cols; j++) {
-                    if (i > 1 && temp[i][j].owner === "P2" && temp[i - 1][j].owner !== "P1" && temp[i - 1][j].owner !== "P2") {
+                    if (i > 0 && temp[i][j].owner === "P2" && temp[i - 1][j].owner !== "P1" && temp[i - 1][j].owner !== "P2") {
                         temp[i - 1][j].owner = "P1_Hint"
                     }
                     if (i < this.props.rows - 1 && temp[i][j].owner === "P2" && temp[i + 1][j].owner !== "P1" && temp[i + 1][j].owner !== "P2") {
                         temp[i + 1][j].owner = "P1_Hint"
                     }
-                    if (j > 1 && temp[i][j].owner === "P2" && temp[i][j - 1].owner !== "P1" && temp[i][j - 1].owner !== "P2") {
+                    if (j > 0 && temp[i][j].owner === "P2" && temp[i][j - 1].owner !== "P1" && temp[i][j - 1].owner !== "P2") {
                         temp[i][j - 1].owner = "P1_Hint"
                     }
                     if (j < this.props.cols - 1 && temp[i][j].owner === "P2" && temp[i][j + 1].owner !== "P1" && temp[i][j + 1].owner !== "P2") {
@@ -119,13 +119,13 @@ class Board extends Component {
         if (this.state.player === 2) {
             for (let i = 0; i < this.props.rows; i++) {
                 for (let j = 0; j < this.props.cols; j++) {
-                    if (i > 1 && temp[i][j].owner === "P1" && temp[i - 1][j].owner !== "P2" && temp[i - 1][j].owner !== "P1") {
+                    if (i > 0 && temp[i][j].owner === "P1" && temp[i - 1][j].owner !== "P2" && temp[i - 1][j].owner !== "P1") {
                         temp[i - 1][j].owner = "P2_Hint"
                     }
                     if (i < this.props.rows - 1 && temp[i][j].owner === "P1" && temp[i + 1][j].owner !== "P2" && temp[i + 1][j].owner !== "P1") {
                         temp[i + 1][j].owner = "P2_Hint"
                     }
-                    if (j > 1 && temp[i][j].owner === "P1" && temp[i][j - 1].owner !== "P2" && temp[i][j - 1].owner !== "P1") {
+                    if (j > 0 && temp[i][j].owner === "P1" && temp[i][j - 1].owner !== "P2" && temp[i][j - 1].owner !== "P1") {
                         temp[i][j - 1].owner = "P1_Hint"
                     }
                     if (j < this.props.cols - 1 && temp[i][j].owner === "P1" && temp[i][j + 1].owner !== "P2" && temp[i][j + 1].owner !== "P1") {
