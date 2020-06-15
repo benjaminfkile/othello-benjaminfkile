@@ -1,13 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
-import Game from "./Game/Game";
+import Game from './Game/Game'
 
-function App() {
-  return (
-    <div className="App">
-      <Game/>
-    </div>
-  );
+class App extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      cols: 8,
+      rows: 8,
+    }
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>
+          Othello
+        </h1>
+        <Game
+          cols={this.state.cols}
+          rows={this.state.rows}
+        />
+      </div>
+    );
+  }
+
 }
 
 export default App;
