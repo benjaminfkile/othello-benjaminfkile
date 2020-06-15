@@ -26,10 +26,6 @@ class Board extends Component {
 
         let temp = this.state.squares
 
-        if (temp[args.col][args.row].owner) {
-            console.log('owned')
-        }
-
         if (this.state.player === 1) {
             this.setState({ player: 2 })
             temp[args.row][args.col].owner = "P1"
