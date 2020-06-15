@@ -110,7 +110,7 @@ class Board extends Component {
                     if (j > 1 && temp[i][j].owner === "P2" && temp[i][j - 1].owner !== "P1" && temp[i][j - 1].owner !== "P2") {
                         temp[i][j - 1].owner = "P1_Hint"
                     }
-                    if (j < 1 && temp[i][j].owner === "P2" && temp[i][j + 1].owner !== "P1" && temp[i][j + 1].owner !== "P2") {
+                    if (j < this.props.cols && temp[i][j].owner  === "P2" && temp[i][j + 1].owner !== "P1" && temp[i][j + 1].owner !== "P2") {
                         temp[i][j + 1].owner = "P1_Hint"
                     }
                 }
@@ -122,7 +122,7 @@ class Board extends Component {
                     if (i > 1 && temp[i][j].owner === "P1" && temp[i - 1][j].owner !== "P2" && temp[i - 1][j].owner !== "P1") {
                         temp[i - 1][j].owner = "P2_Hint"
                     }
-                    if (i < this.props.cols - 1 && temp[i][j].owner === "P1" && temp[i + 1][j].owner !== "P2" && temp[i + 1][j].owner !== "P1") {
+                    if (i < this.props.rows - 1 && temp[i][j].owner === "P1" && temp[i + 1][j].owner !== "P2" && temp[i + 1][j].owner !== "P1") {
                         temp[i + 1][j].owner = "P2_Hint"
                     }
                     if (j > 1 && temp[i][j].owner === "P1" && temp[i][j - 1].owner !== "P2" && temp[i][j - 1].owner !== "P1") {
