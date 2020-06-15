@@ -18,7 +18,7 @@ class Board extends Component {
 
     componentDidMount() {
         this.buildSquares()
-        this._interval = setTimeout(this.getMoves, 1000)
+        this._interval = setTimeout(this.getMoves, 10)
 
     }
 
@@ -89,7 +89,7 @@ class Board extends Component {
                 }
             }
         }
-        this._interval = setTimeout(this.getMoves, 1000)
+        this._interval = setTimeout(this.getMoves, 10)
 
     }
 
